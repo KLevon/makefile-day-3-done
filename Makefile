@@ -18,9 +18,12 @@
 #        if exist dir_name rmdir /q/s dir_name
 #
 
-export BUILD_DIR := $(CURDIR)/build
+export BUILD_DIR := $(CURDIR)/build/release
+ifeq ($(DEBUG),1)
+    BUILD_DIR := $(CURDIR)/build/debug
+endif
 
-.PHONY: all prebuild
+.PHONY: all clean prebuild
 
 all: prebuild
 	make --directory=1_utils
